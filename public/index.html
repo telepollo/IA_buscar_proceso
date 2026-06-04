@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de estado SEACE</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">SEACE · Consulta publica</div>
+          <h1>Consulta el estado de un procedimiento</h1>
+          <p>
+            Ingresa la nomenclatura publicada en SEACE para revisar su estado general y
+            la informacion disponible de sus items.
+          </p>
+        </div>
+        <aside class="hero-panel" aria-label="Informacion de despliegue">
+          <strong>Listo para web</strong>
+          <span>Funciona localmente y tambien como API serverless para Vercel.</span>
+        </aside>
+      </header>
+
+      <section class="search-card" aria-labelledby="search-title">
+        <h2 id="search-title">Buscar procedimiento</h2>
+        <form id="search-form">
+          <label for="nomenclature">Nomenclatura</label>
+          <div class="search-row">
+            <input
+              id="nomenclature"
+              name="nomenclature"
+              type="text"
+              autocomplete="off"
+              placeholder="Ejemplo: AS-SM-12-2026-ENTIDAD-1"
+              required
+            />
+            <button type="submit">Consultar estado</button>
+          </div>
+          <p class="hint">Usa la nomenclatura completa, incluyendo guiones y numero de convocatoria.</p>
+        </form>
+      </section>
+
+      <section id="feedback" class="feedback hidden" aria-live="polite"></section>
+      <section id="results" class="results hidden" aria-live="polite"></section>
+
+      <footer>
+        Datos consultados desde la API oficial de Contrataciones Abiertas del OSCE/OECE.
+      </footer>
+    </main>
+
+    <template id="result-template">
+      <article class="result-card">
+        <div class="result-heading">
+          <div>
+            <span class="result-kicker">Procedimiento</span>
+            <h2 class="result-nomenclature"></h2>
+          </div>
+          <span class="status-badge"></span>
+        </div>
+
+        <dl class="details">
+          <div>
+            <dt>Entidad</dt>
+            <dd class="result-entity"></dd>
+          </div>
+          <div>
+            <dt>Metodo</dt>
+            <dd class="result-method"></dd>
+          </div>
+          <div>
+            <dt>Fecha de publicacion</dt>
+            <dd class="result-date"></dd>
+          </div>
+          <div>
+            <dt>OCID</dt>
+            <dd class="result-ocid"></dd>
+          </div>
+        </dl>
+
+        <div class="description-block">
+          <h3>Descripcion</h3>
+          <p class="result-description"></p>
+        </div>
+
+        <div class="items-block">
+          <h3>Items</h3>
+          <div class="items-list"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
